@@ -62,3 +62,7 @@ $ ./ConsoleApp.exe hello say
 Yo. You called me.
 ```
 
+## License
+
+MIT License
+
