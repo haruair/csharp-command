@@ -47,13 +47,18 @@ class ConsoleApp
 
 ```bash
 $ ./ConsoleApp.exe
+
 Example: 
   hello, h	Hello Command. Nothing Special.
   time, t	Check the system time.
+
 $ ./ConsoleApp.exe hello
+
 Example of hello:
   say, s	When you want to say something, you can use it.
+
 $ ./ConsoleApp.exe hello say
+
 Yo. You called me.
 ```
 
