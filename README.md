@@ -1,5 +1,5 @@
-Haruair.Command
-===============
+CSharp-Command
+==============
 
 Attributes based Command-line interface for C#.
 
