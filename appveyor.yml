@@ -2,6 +2,8 @@
   version: 0.0.{build}
   platform: Any CPU
   configuration: Release
+  build:
+    publish_nuget: true
   before_build:
   - cmd: nuget restore
   after_test:
