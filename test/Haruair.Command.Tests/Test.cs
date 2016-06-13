@@ -8,6 +8,7 @@ namespace Haruair.Command.Tests
 	public class Test
 	{
 		Commander commander;
+		TextWriter originalSw;
 		StringWriter sw;
 
 		[SetUp()]
@@ -17,8 +18,19 @@ namespace Haruair.Command.Tests
 			this.commander.Add (typeof(HelloCommand));
 			this.commander.Add (typeof(TimeCommand));
 
+			this.originalSw = Console.Out;
+
 			this.sw = new StringWriter ();
 			Console.SetOut (sw);
+		}
+
+		[TearDown()]
+		public void Dispose()
+		{
+			this.commander = null;
+			this.sw = null;
+
+			Console.SetOut (this.originalSw);
 		}
 
 		[Test ()]
