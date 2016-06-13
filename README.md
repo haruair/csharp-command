@@ -1,7 +1,7 @@
 CSharp-Command
 ==============
 
-[![Build status](https://ci.appveyor.com/api/projects/status/github/haruair/csharp-command?branch=master&svg=true)](https://ci.appveyor.com/project/haruair/csharp-command/branch/master) [![NuGet](https://img.shields.io/nuget/v/Haruair.Command.svg)]() 
+[![Build status](https://ci.appveyor.com/api/projects/status/github/haruair/csharp-command?branch=master&svg=true)](https://ci.appveyor.com/project/haruair/csharp-command/branch/master) [![NuGet](https://img.shields.io/nuget/v/Haruair.Command.svg)](https://www.nuget.org/packages/Haruair.Command/)
 
 Attributes based Command-line interface for C#.
 
