@@ -43,6 +43,7 @@ namespace Haruair.Command.Tests
   hello, h	Hello Command. Nothing Special.
   time, t	Check the system time.
 ";
+			expected = expected.Replace ("\n", Environment.NewLine);
 			Assert.AreEqual (expected, sw.ToString ());
 		}
 
@@ -55,6 +56,7 @@ namespace Haruair.Command.Tests
 			var expected = @"Example of hello:
   say, s	When you want to say something, you can use it.
 ";
+			expected = expected.Replace ("\n", Environment.NewLine);
 			Assert.AreEqual (expected, sw.ToString ());
 		}
 
@@ -79,6 +81,7 @@ namespace Haruair.Command.Tests
 			var expected = @"Example of t:
   now
 ";
+			expected = expected.Replace ("\n", Environment.NewLine);
 			Assert.AreEqual (expected, sw.ToString ());
 
 		}
