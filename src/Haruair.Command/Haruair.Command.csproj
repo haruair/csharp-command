@@ -36,6 +36,8 @@
     <Compile Include="Attributes\Usage.cs" />
     <Compile Include="Commander.cs" />
     <Compile Include="CommandMeta.cs" />
+    <Compile Include="Request.cs" />
+    <Compile Include="RequestResolver.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -22,14 +22,17 @@ namespace Haruair.Command
 		}
 
 		public void Run(string[] args) {
+			var resolver = new RequestResolver ();
+			var request = resolver.Resolve (args);
+
 			var metaList = this.ConvertCommands (this.Commands);
 
-			if (args.Length == 0) {
+			if (request.Command == null) {
 				Console.WriteLine ("Example: ");
 				this.PrintCommands (metaList);
-			} else if (args.Length == 1) {
-				var meta = this.FindByCommand (args [0], metaList);
-				Console.WriteLine ("Example of {0}:", args [0]);
+			} else if (request.Command != null && request.Method == null) {
+				var meta = this.FindByCommand (request.Command, metaList);
+				Console.WriteLine ("Example of {0}:", request.Command);
 				if (meta.Command == null) {
 					this.PrintCommands (metaList);
 				} else {
@@ -37,9 +40,9 @@ namespace Haruair.Command
 					this.PrintCommands (methodList != null ? methodList : metaList);
 				}
 			} else {
-				var meta = this.FindByCommand (args [0], metaList);
+				var meta = this.FindByCommand (request.Command, metaList);
 				var methodList = this.ConvertMethods (meta.Command);
-				var methodMeta = this.FindByCommand (args [1], methodList);
+				var methodMeta = this.FindByCommand (request.Method, methodList);
 				if (methodMeta == null) {
 					this.PrintCommands (methodList);
 				} else {
