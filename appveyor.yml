@@ -1,5 +1,5 @@
 -
-  version: 0.0.1+{build}
+  version: 0.0.{build}
   before_build:
   - cmd: nuget restore
   after_test:
