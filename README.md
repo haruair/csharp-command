@@ -1,9 +1,9 @@
 CSharp-Command
 ==============
 
-Attributes based Command-line interface for C#.
-
 [![Build status](https://ci.appveyor.com/api/projects/status/github/haruair/csharp-command?branch=master&svg=true)](https://ci.appveyor.com/project/haruair/csharp-command/branch/master) [![NuGet](https://img.shields.io/nuget/v/Haruair.Command.svg)]() 
+
+Attributes based Command-line interface for C#.
 
 ## Example
 
@@ -54,14 +54,21 @@ Example:
   hello, h	Hello Command. Nothing Special.
   time, t	Check the system time.
 
+```
+
+```bash
 $ ./ConsoleApp.exe hello
 
 Example of hello:
   say, s	When you want to say something, you can use it.
 
+```
+
+```bash
 $ ./ConsoleApp.exe hello say
 
 Yo. You called me.
+
 ```
 
 ## License
