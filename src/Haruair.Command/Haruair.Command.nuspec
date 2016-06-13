@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Haruair.Command</id>
+    <version>$version$</version>
+    <title>CSharp-Command</title>
+    <authors>haruair</authors>
+    <owners>haruair</owners>
+    <licenseUrl>https://github.com/haruair/csharp-command/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/haruair/csharp-command</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Attributes based Command-line interface for C#</description>
+    <releaseNotes>Work in Progress</releaseNotes>
+    <copyright>Copyright 2016 Edward Kim</copyright>
+    <tags>Command-line CLI CUI</tags>
+  </metadata>
+</package>
