@@ -9,7 +9,7 @@
   after_test:
   - cmd: nuget pack "src\Haruair.Command\Haruair.Command.nuspec" -Version %APPVEYOR_BUILD_VERSION%
   artifacts:
-  - path: '**\Haruair.Command.Compiled.*.nupkg'
+  - path: '**\Haruair.Command.*.nupkg'
     name: Command
   deploy:
   - provider: NuGet
