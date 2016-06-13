@@ -1,5 +1,6 @@
 -
   version: 0.0.{build}
+  configuration: Release
   before_build:
   - cmd: nuget restore
   after_test:
@@ -12,4 +13,7 @@
     api_key:
       secure: 5pkLG3Zs7MG7cGt0xiUBCoXVaBbORttmWotdVxvImVlL6hvwJY2rSZmUgtOxxp6u
     artifact: Command
+    on:
+      platform: Any CPU
+      configuration: Release
 
