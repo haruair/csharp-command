@@ -43,8 +43,8 @@ namespace Haruair.Command.Tests
   hello, h	Hello Command. Nothing Special.
   time, t	Check the system time.
 ";
-			expected = expected.Replace ("\n", Environment.NewLine);
-			Assert.AreEqual (expected, sw.ToString ());
+			expected = expected.Replace ("\n", Environment.NewLine).TrimEnd();
+			Assert.AreEqual (expected, sw.ToString ().TrimEnd());
 		}
 
 		[Test ()]
@@ -56,8 +56,8 @@ namespace Haruair.Command.Tests
 			var expected = @"Example of hello:
   say, s	When you want to say something, you can use it.
 ";
-			expected = expected.Replace ("\n", Environment.NewLine);
-			Assert.AreEqual (expected, sw.ToString ());
+			expected = expected.Replace ("\n", Environment.NewLine).TrimEnd();
+			Assert.AreEqual (expected, sw.ToString ().TrimEnd());
 		}
 
 		[Test ()]
@@ -66,9 +66,9 @@ namespace Haruair.Command.Tests
 			var mockArgs = new string[] { "hello", "say" };
 			this.commander.Run (mockArgs);
 
-			var expected = String.Format ("Yo. You called me.{0}", Environment.NewLine);
+			var expected = String.Format ("Yo. You called me.{0}", Environment.NewLine).TrimEnd();
 
-			Assert.AreEqual (expected, sw.ToString ());
+			Assert.AreEqual (expected, sw.ToString ().TrimEnd());
 
 		}
 
@@ -81,8 +81,8 @@ namespace Haruair.Command.Tests
 			var expected = @"Example of t:
   now
 ";
-			expected = expected.Replace ("\n", Environment.NewLine);
-			Assert.AreEqual (expected, sw.ToString ());
+			expected = expected.Replace ("\n", Environment.NewLine).TrimEnd();
+			Assert.AreEqual (expected, sw.ToString ().TrimEnd());
 
 		}
 
@@ -92,8 +92,8 @@ namespace Haruair.Command.Tests
 			var mockArgs = new string[] { "t", "now" };
 			this.commander.Run (mockArgs);
 
-			var expected = String.Format("{0}{1}", DateTime.Now.ToString(), Environment.NewLine);
-			Assert.AreEqual (expected, sw.ToString());
+			var expected = String.Format("{0}{1}", DateTime.Now.ToString(), Environment.NewLine).TrimEnd();
+			Assert.AreEqual (expected, sw.ToString().TrimEnd());
 		}
 	}
 
