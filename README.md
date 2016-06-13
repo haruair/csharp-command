@@ -3,6 +3,8 @@ CSharp-Command
 
 Attributes based Command-line interface for C#.
 
+[![Build status](https://ci.appveyor.com/api/projects/status/github/haruair/csharp-command?branch=master&svg=true)](https://ci.appveyor.com/project/haruair/csharp-command/branch/master)
+
 ## Example
 
 ```csharp
