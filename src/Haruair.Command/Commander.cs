@@ -30,8 +30,12 @@ namespace Haruair.Command
 			} else if (args.Length == 1) {
 				var meta = this.FindByCommand (args [0], metaList);
 				Console.WriteLine ("Example of {0}:", args [0]);
-				var methodList = this.ConvertMethods (meta.Command);
-				this.PrintCommands (methodList);
+				if (meta.Command == null) {
+					this.PrintCommands (metaList);
+				} else {
+					var methodList = this.ConvertMethods (meta.Command);
+					this.PrintCommands (methodList != null ? methodList : metaList);
+				}
 			} else {
 				var meta = this.FindByCommand (args [0], metaList);
 				var methodList = this.ConvertMethods (meta.Command);
