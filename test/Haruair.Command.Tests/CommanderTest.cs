@@ -5,7 +5,7 @@ using System.IO;
 namespace Haruair.Command.Tests
 {
 	[TestFixture ()]
-	public class Test
+	public class CommanderTest
 	{
 		Commander commander;
 		TextWriter originalSw;
