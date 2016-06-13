@@ -14,4 +14,8 @@
     <copyright>Copyright 2016 Edward Kim</copyright>
     <tags>Command-line CLI CUI</tags>
   </metadata>
+
+  <files>
+    <file src="bin\Release\**\Haruair.Command.*" target="lib" />
+  </files>
 </package>
