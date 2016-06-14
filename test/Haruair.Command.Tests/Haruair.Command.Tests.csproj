@@ -35,7 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommanderTest.cs" />
-    <Compile Include="RequestResolverTest.cs" />
+    <Compile Include="BasicRequestResolverTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -5,7 +5,7 @@ using Haruair.Command.Interface;
 namespace Haruair.Command.Tests
 {
 	[TestFixture ()]
-	public class RequestResolverTest
+	public class BasicRequestResolverTest
 	{
 		IRequestResolver resolver;
 
