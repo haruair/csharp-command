@@ -1,17 +1,18 @@
 ﻿using NUnit.Framework;
 using System;
+using Haruair.Command.Interface;
 
 namespace Haruair.Command.Tests
 {
 	[TestFixture ()]
 	public class RequestResolverTest
 	{
-		RequestResolver resolver;
+		IRequestResolver resolver;
 
 		[SetUp ()]
 		public void Init()
 		{
-			resolver = new RequestResolver ();
+			resolver = new BasicRequestResolver ();
 		}
 
 		[TearDown ()]
