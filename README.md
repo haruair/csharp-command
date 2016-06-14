@@ -41,9 +41,9 @@ class ConsoleApp
 {
 	public static void Main (string[] args)
 	{
-		var commander = new Commander();
-		commander.Add (typeof(HelloCommand));
-		commander.Add (typeof(TimeCommand));
+		var commander = new Commander ();
+		commander.Add<HelloCommand> ();
+		commander.Add<TimeCommand> ();
 		commander.Run (args);
 	}
 }
@@ -80,6 +80,7 @@ class ConsoleApp
 			RequestParser = new CustomRequestParser()
 		};
 		commander.Add (typeof(HelloCommand));
+		// same as commander.Add<HelloCommand> ();
 		commander.Add (typeof(TimeCommand));
 		commander.Run (args);
 	}
