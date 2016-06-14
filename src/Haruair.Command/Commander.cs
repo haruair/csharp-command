@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Haruair.Command.Interface;
 
 namespace Haruair.Command
 {
 	public class Commander
 	{
 		protected IList<Type> Commands {
+			get;
+			set;
+		}
+
+		public IRequestResolver Resolver {
 			get;
 			set;
 		}
@@ -22,8 +28,12 @@ namespace Haruair.Command
 		}
 
 		public void Run(string[] args) {
-			var resolver = new RequestResolver ();
-			var request = resolver.Resolve (args);
+
+			if (Resolver == null) {
+				Resolver = new BasicRequestResolver ();
+			}
+
+			var request = Resolver.Resolve (args);
 
 			var metaList = this.ConvertCommands (this.Commands);
 

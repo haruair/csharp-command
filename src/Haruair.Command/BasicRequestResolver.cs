@@ -1,13 +1,10 @@
 ﻿using System;
+using Haruair.Command.Interface;
 
 namespace Haruair.Command
 {
-	public class RequestResolver
+	public class BasicRequestResolver : IRequestResolver
 	{
-		public RequestResolver ()
-		{
-		}
-
 		public Request Resolve(string[] args)
 		{
 			var request = new Request ();

@@ -29,6 +29,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <Package>nunit</Package>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -37,10 +40,12 @@
     <Compile Include="Commander.cs" />
     <Compile Include="CommandMeta.cs" />
     <Compile Include="Request.cs" />
-    <Compile Include="RequestResolver.cs" />
+    <Compile Include="Interface\IRequestResolver.cs" />
+    <Compile Include="BasicRequestResolver.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Attributes\" />
+    <Folder Include="Interface\" />
   </ItemGroup>
 </Project>
