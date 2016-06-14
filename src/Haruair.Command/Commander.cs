@@ -34,7 +34,7 @@ namespace Haruair.Command
 		}
 
 		public Commander Add<T> () {
-			this.Commands.Add (typeof(T));
+			this.Add (typeof(T));
 			return this;
 		}
 
