@@ -40,11 +40,11 @@
     <Compile Include="Commander.cs" />
     <Compile Include="CommandMeta.cs" />
     <Compile Include="Request.cs" />
-    <Compile Include="BasicRequestResolver.cs" />
     <Compile Include="Interface\IRequest.cs" />
-    <Compile Include="Interface\IRequestResolver.cs" />
     <Compile Include="Interface\IPrompter.cs" />
     <Compile Include="BasicConsolePrompter.cs" />
+    <Compile Include="Interface\IRequestParser.cs" />
+    <Compile Include="BasicRequestParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

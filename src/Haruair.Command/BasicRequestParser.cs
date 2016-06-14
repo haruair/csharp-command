@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace Haruair.Command
 {
-	public class BasicRequestResolver : IRequestResolver
+	public class BasicRequestParser : IRequestParser
 	{
 		public string OptionFlag = "--";
 
-		public IRequest Resolve(string[] args)
+		public IRequest Parse(string[] args)
 		{
 			var request = new Request ();
 			var arguments = new List<string> (args);

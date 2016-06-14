@@ -3,15 +3,15 @@
 namespace Haruair.Command.Interface
 {
 	/// <summary>
-	/// RequestResolver Interface
+	/// RequestParser Interface
 	/// </summary>
-	public interface IRequestResolver
+	public interface IRequestParser
 	{
 		/// <summary>
-		/// Resolve string array for input of the consoles
+		/// Parse string array for input of the consoles
 		/// </summary>
 		/// <param name="args">Arguments.</param>
-		IRequest Resolve(string[] args);
+		IRequest Parse(string[] args);
 	}
 }
 

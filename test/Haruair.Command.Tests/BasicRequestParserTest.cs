@@ -5,27 +5,27 @@ using Haruair.Command.Interface;
 namespace Haruair.Command.Tests
 {
 	[TestFixture ()]
-	public class BasicRequestResolverTest
+	public class BasicRequestParserTest
 	{
-		IRequestResolver resolver;
+		IRequestParser parser;
 
 		[SetUp ()]
 		public void Init()
 		{
-			resolver = new BasicRequestResolver ();
+			parser = new BasicRequestParser ();
 		}
 
 		[TearDown ()]
 		public void Dispose()
 		{
-			resolver = null;
+			parser = null;
 		}
 
 		[Test ()]
 		public void EmptyArgsTestCase ()
 		{
 			var args = new string[] { };
-			var request = resolver.Resolve (args);
+			var request = parser.Parse (args);
 
 			Assert.AreEqual (null, request.Command);
 			Assert.AreEqual (null, request.Method);
@@ -35,7 +35,7 @@ namespace Haruair.Command.Tests
 		public void CommandTestCase ()
 		{
 			var args = new string[] { "hello" };
-			var request = resolver.Resolve (args);
+			var request = parser.Parse (args);
 
 			Assert.AreEqual ("hello", request.Command);
 			Assert.AreEqual (null, request.Method);
@@ -45,7 +45,7 @@ namespace Haruair.Command.Tests
 		public void CommandAndMethodTestCase ()
 		{
 			var args = new string[] { "hello", "world" };
-			var request = resolver.Resolve (args);
+			var request = parser.Parse (args);
 
 			Assert.AreEqual ("hello", request.Command);
 			Assert.AreEqual ("world", request.Method);
@@ -55,7 +55,7 @@ namespace Haruair.Command.Tests
 		public void EssentialExpressionTestCase ()
 		{
 			var args = new string[] { "hello", "world", "--url", "http://haruair.com", "edward" };
-			var request = resolver.Resolve (args);
+			var request = parser.Parse (args);
 
 			Assert.AreEqual ("hello", request.Command);
 			Assert.AreEqual ("world", request.Method);
@@ -74,7 +74,7 @@ namespace Haruair.Command.Tests
 		{
 			var args = new string[] {
 				"hello", "world", "--url", "http://haruair.com", "edward", "--nick-name", "eddy", "SecondParam" };
-			var request = resolver.Resolve (args);
+			var request = parser.Parse (args);
 
 			Assert.AreEqual ("hello", request.Command);
 			Assert.AreEqual ("world", request.Method);
