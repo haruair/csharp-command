@@ -40,13 +40,17 @@
     <Compile Include="Commander.cs" />
     <Compile Include="CommandMeta.cs" />
     <Compile Include="Request.cs" />
-    <Compile Include="Interface\IRequestResolver.cs" />
     <Compile Include="BasicRequestResolver.cs" />
-    <Compile Include="Interface\IRequest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Attributes\" />
     <Folder Include="Interface\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Haruair.Command.Interface\Haruair.Command.Interface.csproj">
+      <Project>{EAB6294A-64C7-4D51-88BA-805E37693740}</Project>
+      <Name>Haruair.Command.Interface</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

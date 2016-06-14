@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Haruair.Command", "src\Haru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Haruair.Command.Tests", "test\Haruair.Command.Tests\Haruair.Command.Tests.csproj", "{DA3AF3E4-7DA1-489E-B116-95652C3C22B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Haruair.Command.Interface", "src\Haruair.Command.Interface\Haruair.Command.Interface.csproj", "{EAB6294A-64C7-4D51-88BA-805E37693740}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{DA3AF3E4-7DA1-489E-B116-95652C3C22B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA3AF3E4-7DA1-489E-B116-95652C3C22B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA3AF3E4-7DA1-489E-B116-95652C3C22B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAB6294A-64C7-4D51-88BA-805E37693740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAB6294A-64C7-4D51-88BA-805E37693740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAB6294A-64C7-4D51-88BA-805E37693740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAB6294A-64C7-4D51-88BA-805E37693740}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = src\Haruair.Command\Haruair.Command.csproj
