@@ -37,7 +37,7 @@ namespace Haruair.Command
 					this.PrintCommands (metaList);
 				} else {
 					var methodList = this.ConvertMethods (meta.Command);
-					this.PrintCommands (methodList != null ? methodList : metaList);
+					this.PrintCommands (methodList != null && methodList.Count > 0 ? methodList : metaList);
 				}
 			} else {
 				var meta = this.FindByCommand (request.Command, metaList);
