@@ -46,9 +46,5 @@
       <Project>{3A714274-1A55-49A4-B57D-07FB3C2D9929}</Project>
       <Name>Haruair.Command</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Haruair.Command.Interface\Haruair.Command.Interface.csproj">
-      <Project>{EAB6294A-64C7-4D51-88BA-805E37693740}</Project>
-      <Name>Haruair.Command.Interface</Name>
-    </ProjectReference>
   </ItemGroup>
 </Project>
