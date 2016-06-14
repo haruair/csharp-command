@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using System.IO;
+using Haruair.Command.Tests.Fixtures;
 
 namespace Haruair.Command.Tests
 {
@@ -94,27 +95,6 @@ namespace Haruair.Command.Tests
 
 			var expected = String.Format("{0}{1}", DateTime.Now.ToString(), Environment.NewLine).TrimEnd();
 			Assert.AreEqual (expected, sw.ToString().TrimEnd());
-		}
-	}
-
-	[Command("hello", "h")]
-	[Usage("Hello Command. Nothing Special.")]
-	public class HelloCommand
-	{
-		[Command("say", "s")]
-		[Usage("When you want to say something, you can use it.")]
-		public void Say() {
-			Console.WriteLine ("Yo. You called me.");
-		}
-	}
-
-	[Command("time", "t")]
-	[Usage("Check the system time.")]
-	public class TimeCommand
-	{
-		[Command("now")]
-		public void Now() {
-			Console.WriteLine ("{0}", DateTime.Now);
 		}
 	}
 }

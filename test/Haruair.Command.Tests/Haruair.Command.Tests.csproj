@@ -36,6 +36,8 @@
   <ItemGroup>
     <Compile Include="CommanderTest.cs" />
     <Compile Include="BasicRequestResolverTest.cs" />
+    <Compile Include="Fixtures\TimeCommand.cs" />
+    <Compile Include="Fixtures\HelloWorldCommand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -46,5 +48,8 @@
       <Project>{3A714274-1A55-49A4-B57D-07FB3C2D9929}</Project>
       <Name>Haruair.Command</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fixtures\" />
   </ItemGroup>
 </Project>
