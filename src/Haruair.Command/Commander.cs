@@ -23,8 +23,14 @@ namespace Haruair.Command
 			this.Commands = new List<Type> ();
 		}
 
-		public void Add (Type type) {
+		public Commander Add (Type type) {
 			this.Commands.Add (type);
+			return this;
+		}
+
+		public Commander Add<T> () {
+			this.Commands.Add (typeof(T));
+			return this;
 		}
 
 		public void Parse(string[] args) {

@@ -16,7 +16,8 @@ namespace Haruair.Command.Tests
 		public void Init ()
 		{
 			this.commander = new Commander ();
-			this.commander.Add (typeof(HelloCommand));
+
+			this.commander.Add<HelloCommand> ();
 			this.commander.Add (typeof(TimeCommand));
 
 			this.originalSw = Console.Out;
