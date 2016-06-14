@@ -14,5 +14,13 @@ namespace Haruair.Command
 			get;
 			set;
 		}
+		public IList<string> Params {
+			get;
+			set;
+		}
+		public IDictionary<string, string> Options {
+			get;
+			set;
+		}
 	}
 }

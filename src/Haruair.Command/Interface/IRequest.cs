@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Haruair.Command.Interface
 {
@@ -6,6 +7,8 @@ namespace Haruair.Command.Interface
 	{
 		string Command { get; set; }
 		string Method { get; set; }
+		IList<string> Params { get; set; }
+		IDictionary<string, string> Options { get; set; }
 	}
 }
 
