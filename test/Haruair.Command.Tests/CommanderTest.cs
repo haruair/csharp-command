@@ -37,7 +37,7 @@ namespace Haruair.Command.Tests
 		public void NoInputTestCase ()
 		{
 			var mockArgs = new string[0];
-			this.commander.Run (mockArgs);
+			this.commander.Parse (mockArgs);
 
 			var expected = @"Example: 
   hello, h	Hello Command. Nothing Special.
@@ -51,7 +51,7 @@ namespace Haruair.Command.Tests
 		public void HelloTestCase()
 		{
 			var mockArgs = new string[] { "hello" };
-			this.commander.Run (mockArgs);
+			this.commander.Parse (mockArgs);
 
 			var expected = @"Example of hello:
   say, s	When you want to say something, you can use it.
@@ -64,7 +64,7 @@ namespace Haruair.Command.Tests
 		public void HelloSayTestCase()
 		{
 			var mockArgs = new string[] { "hello", "say" };
-			this.commander.Run (mockArgs);
+			this.commander.Parse (mockArgs);
 
 			var expected = String.Format ("Yo. You called me.{0}", Environment.NewLine).TrimEnd();
 
@@ -76,7 +76,7 @@ namespace Haruair.Command.Tests
 		public void TimeTestCase()
 		{
 			var mockArgs = new string[] { "t" };
-			this.commander.Run (mockArgs);
+			this.commander.Parse (mockArgs);
 
 			var expected = @"Example of t:
   now
@@ -90,7 +90,7 @@ namespace Haruair.Command.Tests
 		public void TimeNowTestCase()
 		{
 			var mockArgs = new string[] { "t", "now" };
-			this.commander.Run (mockArgs);
+			this.commander.Parse (mockArgs);
 
 			var expected = String.Format("{0}{1}", DateTime.Now.ToString(), Environment.NewLine).TrimEnd();
 			Assert.AreEqual (expected, sw.ToString().TrimEnd());

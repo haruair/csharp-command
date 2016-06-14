@@ -27,7 +27,7 @@ namespace Haruair.Command
 			this.Commands.Add (type);
 		}
 
-		public void Run(string[] args) {
+		public void Parse(string[] args) {
 
 			if (Resolver == null) {
 				Resolver = new BasicRequestResolver ();
