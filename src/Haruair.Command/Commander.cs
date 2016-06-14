@@ -13,7 +13,7 @@ namespace Haruair.Command
 			set;
 		}
 
-		public IRequestResolver Resolver {
+		public IRequestResolver RequestResolver {
 			get;
 			set;
 		}
@@ -35,11 +35,11 @@ namespace Haruair.Command
 
 		public void Parse(string[] args) {
 
-			if (Resolver == null) {
-				Resolver = new BasicRequestResolver ();
+			if (RequestResolver == null) {
+				RequestResolver = new BasicRequestResolver ();
 			}
 
-			var request = Resolver.Resolve (args);
+			var request = RequestResolver.Resolve (args);
 
 			var metaList = this.ConvertCommands (this.Commands);
 
