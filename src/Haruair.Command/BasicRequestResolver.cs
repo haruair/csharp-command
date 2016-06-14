@@ -5,7 +5,7 @@ namespace Haruair.Command
 {
 	public class BasicRequestResolver : IRequestResolver
 	{
-		public Request Resolve(string[] args)
+		public IRequest Resolve(string[] args)
 		{
 			var request = new Request ();
 

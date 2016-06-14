@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Haruair.Command.Interface;
 
 namespace Haruair.Command
 {
-	public class Request
+	public class Request : IRequest
 	{
 		public string Command {
 			get;

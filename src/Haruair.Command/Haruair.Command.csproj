@@ -42,6 +42,7 @@
     <Compile Include="Request.cs" />
     <Compile Include="Interface\IRequestResolver.cs" />
     <Compile Include="BasicRequestResolver.cs" />
+    <Compile Include="Interface\IRequest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

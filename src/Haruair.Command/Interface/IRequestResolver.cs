@@ -11,7 +11,7 @@ namespace Haruair.Command.Interface
 		/// Resolve string array for input of the consoles
 		/// </summary>
 		/// <param name="args">Arguments.</param>
-		Request Resolve(string[] args);
+		IRequest Resolve(string[] args);
 	}
 }
 
