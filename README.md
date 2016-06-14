@@ -7,6 +7,8 @@ Attributes based Command-line interface for C#.
 
 ## Example
 
+### Simple
+
 ```csharp
 using System;
 using Haruair.Command;
@@ -38,6 +40,43 @@ class ConsoleApp
 	public static void Main (string[] args)
 	{
 		var commander = new Commander();
+		commander.Add (typeof(HelloCommand));
+		commander.Add (typeof(TimeCommand));
+		commander.Run (args);
+	}
+}
+```
+
+### Advanced
+
+```csharp
+using Haruair.Command.Interface;
+
+public class CustomRequest : IRequest
+{
+	public string Command { get; set; }
+	public string Method { get; set; }
+	public string SomethingCustom { get; set; }
+}
+
+public class CustomRequestResolver : IRequestResolver
+{
+	public IRequest Resolve(string[] args)
+	{
+		var request = new CustomRequest();
+		request.Command = "start";
+		// Some custom code
+		return request;
+	}
+}
+
+class ConsoleApp 
+{
+	public static void Main (string[] args)
+	{
+		var commander = new Commander() {
+			resolver = new CustomRequestResolver()
+		};
 		commander.Add (typeof(HelloCommand));
 		commander.Add (typeof(TimeCommand));
 		commander.Run (args);
