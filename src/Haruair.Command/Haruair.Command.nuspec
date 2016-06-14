@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/haruair/csharp-command</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Attributes based Command-line interface for C#</description>
-    <releaseNotes>Work in Progress</releaseNotes>
+    <releaseNotes>Mind the Version! This package is working in Progress. You can follow the detail from Project Github Page.</releaseNotes>
     <copyright>Copyright 2016 Edward Kim</copyright>
     <tags>Command-line CLI CUI</tags>
   </metadata>
