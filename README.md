@@ -5,9 +5,9 @@ CSharp-Command
 
 Attributes based Command-line interface for C#.
 
-**MIND THE VERSION: It can be broken everything during the version 0.0.x.**
-
 ## Example
+
+**MIND THE VERSION: It can be broken everything during the version 0.0.x.**
 
 ### Simple
 
