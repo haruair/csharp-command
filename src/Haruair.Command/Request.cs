@@ -17,10 +17,12 @@ namespace Haruair.Command
 		public IList<string> Params {
 			get;
 			set;
-		}
+		} = new List<string> ();
+
 		public IDictionary<string, string> Options {
 			get;
 			set;
-		}
+		} = new Dictionary<string, string>();
+
 	}
 }
