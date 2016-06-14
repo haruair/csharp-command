@@ -61,9 +61,9 @@ public class CustomRequest : IRequest
 	public string SomethingCustom { get; set; }
 }
 
-public class CustomRequestResolver : IRequestResolver
+public class CustomRequestParser : IRequestParser
 {
-	public IRequest Resolve(string[] args)
+	public IRequest Parse(string[] args)
 	{
 		var request = new CustomRequest();
 		request.Command = "start";
@@ -77,7 +77,7 @@ class ConsoleApp
 	public static void Main (string[] args)
 	{
 		var commander = new Commander() {
-			resolver = new CustomRequestResolver()
+			RequestParser = new CustomRequestParser()
 		};
 		commander.Add (typeof(HelloCommand));
 		commander.Add (typeof(TimeCommand));
