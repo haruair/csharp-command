@@ -18,6 +18,11 @@ namespace Haruair.Command
 			set;
 		}
 
+		public IPrompter Prompter {
+			get;
+			set;
+		}
+
 		public Commander ()
 		{
 			this.Commands = new List<Type> ();
@@ -39,16 +44,20 @@ namespace Haruair.Command
 				RequestResolver = new BasicRequestResolver ();
 			}
 
+			if (Prompter == null) {
+				Prompter = new BasicConsolePrompter ();
+			}
+
 			var request = RequestResolver.Resolve (args);
 
 			var metaList = this.ConvertCommands (this.Commands);
 
 			if (request.Command == null) {
-				Console.WriteLine ("Example: ");
+				Prompter.WriteLine ("Example: ");
 				this.PrintCommands (metaList);
 			} else if (request.Command != null && request.Method == null) {
 				var meta = this.FindByCommand (request.Command, metaList);
-				Console.WriteLine ("Example of {0}:", request.Command);
+				Prompter.WriteLine ("Example of {0}:", request.Command);
 				if (meta.Command == null) {
 					this.PrintCommands (metaList);
 				} else {
@@ -111,11 +120,11 @@ namespace Haruair.Command
 
 		protected void PrintCommands(IList<CommandMeta> metaList) {
 			foreach (var meta in metaList) {
-				Console.Write ("  {0}", meta.Method);
-				if(meta.Alias != null) Console.Write (", {0}", meta.Alias);
-				if(meta.Description != null) Console.WriteLine ("\t{0}", meta.Description);
+				Prompter.Write ("  {0}", meta.Method);
+				if(meta.Alias != null) Prompter.Write (", {0}", meta.Alias);
+				if(meta.Description != null) Prompter.WriteLine ("\t{0}", meta.Description);
 				else
-					Console.WriteLine ();
+					Prompter.WriteLine ();
 			}
 		}
 	}

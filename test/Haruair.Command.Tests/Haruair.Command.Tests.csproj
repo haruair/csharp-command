@@ -38,6 +38,7 @@
     <Compile Include="BasicRequestResolverTest.cs" />
     <Compile Include="Fixtures\TimeCommand.cs" />
     <Compile Include="Fixtures\HelloWorldCommand.cs" />
+    <Compile Include="BasicConsolePrompterTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
