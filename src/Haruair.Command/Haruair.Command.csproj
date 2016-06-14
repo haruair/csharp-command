@@ -45,6 +45,7 @@
     <Compile Include="BasicConsolePrompter.cs" />
     <Compile Include="Interface\IRequestParser.cs" />
     <Compile Include="BasicRequestParser.cs" />
+    <Compile Include="Interface\ICommandResolver.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
