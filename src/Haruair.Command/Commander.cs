@@ -61,72 +61,20 @@ namespace Haruair.Command
 
 			CommandResolver.Commands = this.Commands;
 
-			var metaList = this.ConvertCommands (this.Commands);
+			var meta = CommandResolver.Match (request);
 
-			if (request.Command == null) {
-				Prompter.WriteLine ("Example: ");
-				this.PrintCommands (metaList);
-			} else if (request.Command != null && request.Method == null) {
-				var meta = this.FindByCommand (request.Command, metaList);
-				Prompter.WriteLine ("Example of {0}:", request.Command);
-				if (meta.Command == null) {
-					this.PrintCommands (metaList);
-				} else {
-					var methodList = this.ConvertMethods (meta.Command);
-					this.PrintCommands (methodList != null && methodList.Count > 0 ? methodList : metaList);
-				}
+			if (meta != null) {
+				meta.CallMethod.Invoke (Activator.CreateInstance (meta.Command), null);
 			} else {
-				var meta = this.FindByCommand (request.Command, metaList);
-				var methodList = this.ConvertMethods (meta.Command);
-				var methodMeta = this.FindByCommand (request.Method, methodList);
-				if (methodMeta == null) {
-					this.PrintCommands (methodList);
+				var list = CommandResolver.Find (request);
+				var identity = list.FirstOrDefault ();
+				if (identity.CallMethod != null) {
+					Prompter.WriteLine ("Example of {0}:", request.Command);
 				} else {
-					methodMeta.CallMethod.Invoke (Activator.CreateInstance (methodMeta.Command), null);
+					Prompter.WriteLine ("Example: ");
 				}
+				this.PrintCommands (list);
 			}
-		}
-
-		protected CommandMeta FindByCommand(string key, IList<CommandMeta> metas) {
-			return metas.Where (p => (p.Alias != null && p.Alias.Equals (key))
-				|| (p.Method != null && p.Method.Equals (key))).FirstOrDefault ();
-		}
-
-		protected IList<CommandMeta> ConvertCommands(IList<Type> types) {
-			var metaList = new List<CommandMeta>();
-			foreach (var type in types) {
-				var attrs = Attribute.GetCustomAttributes (type);
-				metaList.Add (this.ConvertToCommandMeta (attrs, type));
-			}
-			return metaList;
-		}
-
-		protected IList<CommandMeta> ConvertMethods(Type type) {
-			var metaList = new List<CommandMeta>();
-			var methods = type.GetMethods ();
-			foreach (var method in methods) {
-				var attrs = Attribute.GetCustomAttributes (method);
-				if (attrs.Length > 0) {
-					metaList.Add (this.ConvertToCommandMeta (attrs, type, method));
-				}
-			}
-			return metaList;
-		}
-
-		protected CommandMeta ConvertToCommandMeta (Attribute[] attrs, Type type = null, MethodInfo method = null) {
-
-			Command command = (Command) attrs.Where (p => p is Command).FirstOrDefault();
-			Usage usage = (Usage) attrs.Where (p => p is Usage).FirstOrDefault();
-
-			var meta = new CommandMeta () {
-				Alias = command?.Alias,
-				Method = command?.Method,
-				Description = usage?.Description,
-				Command = type,
-				CallMethod = method
-			};
-
-			return meta;
 		}
 
 		protected void PrintCommands(IList<CommandMeta> metaList) {
