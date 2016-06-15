@@ -23,6 +23,11 @@ namespace Haruair.Command
 			set;
 		}
 
+		public ICommandResolver CommandResolver {
+			get;
+			set;
+		}
+
 		public Commander ()
 		{
 			this.Commands = new List<Type> ();
@@ -44,11 +49,17 @@ namespace Haruair.Command
 				RequestParser = new BasicRequestParser ();
 			}
 
+			if (CommandResolver == null) {
+				CommandResolver = new BasicCommandResolver ();
+			}
+
 			if (Prompter == null) {
 				Prompter = new BasicConsolePrompter ();
 			}
 
 			var request = RequestParser.Parse (args);
+
+			CommandResolver.Commands = this.Commands;
 
 			var metaList = this.ConvertCommands (this.Commands);
 
