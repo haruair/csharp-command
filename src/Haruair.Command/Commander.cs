@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Haruair.Command.Interface;
 
 namespace Haruair.Command
@@ -30,16 +29,16 @@ namespace Haruair.Command
 
 		public Commander ()
 		{
-			this.Commands = new List<Type> ();
+			Commands = new List<Type> ();
 		}
 
 		public Commander Add (Type type) {
-			this.Commands.Add (type);
+			Commands.Add (type);
 			return this;
 		}
 
 		public Commander Add<T> () {
-			this.Add (typeof(T));
+			Add (typeof(T));
 			return this;
 		}
 
@@ -59,7 +58,7 @@ namespace Haruair.Command
 
 			var request = RequestParser.Parse (args);
 
-			CommandResolver.Commands = this.Commands;
+			CommandResolver.Commands = Commands;
 
 			var meta = CommandResolver.Match (request);
 
@@ -73,9 +72,7 @@ namespace Haruair.Command
 					var i = 0;
 					foreach (var methodParameter in methodParameters) {
 						var requestParam = request.Params.ElementAtOrDefault (i);
-						var methodParamAttribute = methodParamAttributes
-							.Where (p => p.Attribute.Equals (methodParameter.Name))
-							.FirstOrDefault ();
+						var methodParamAttribute = methodParamAttributes.FirstOrDefault(p => p.Attribute.Equals(methodParameter.Name));
 						
 						if (requestParam != null || methodParamAttribute.Required == false) parameters.Add (requestParam);
 						i++;
@@ -88,11 +85,11 @@ namespace Haruair.Command
 						meta.MethodInfo.Invoke (Activator.CreateInstance (meta.CommandType), parameters.ToArray ());
 					}
 				} else {
-					this.PrintMessage (request);
+					PrintMessage (request);
 				}
 
 			} else {
-				this.PrintMessage (request);
+				PrintMessage (request);
 			}
 		}
 
@@ -104,7 +101,7 @@ namespace Haruair.Command
 			} else {
 				Prompter.WriteLine ("Example: ");
 			}
-			this.PrintCommands (list);
+			PrintCommands (list);
 		}
 
 		protected void PrintCommands(IList<CommandMeta> metaList) {

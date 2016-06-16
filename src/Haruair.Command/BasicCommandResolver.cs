@@ -18,18 +18,17 @@ namespace Haruair.Command
 				return null;
 			}
 			
-			var commandList = this.ConvertCommandsToCommandMeta (this.Commands);
-			var command = commandList.Where (p => (p.Method.Equals(request.Command) || p.Alias.Equals(request.Command))).FirstOrDefault ();
+			var commandList = ConvertCommandsToCommandMeta (Commands);
+			var command = commandList.FirstOrDefault(p => (p.Method.Equals(request.Command) || p.Alias.Equals(request.Command)));
 
 			if (command == null) {
 				return null;
 			}
 
-			var methodList = this.ConvertCommandToCommandMeta (command.CommandType);
-			var method = methodList.Where (p =>
-				(p.Method != null && p.Method.Equals (request.Method))
-				|| (p.Alias != null && p.Alias.Equals (request.Method))
-			).FirstOrDefault ();
+			var methodList = ConvertCommandToCommandMeta (command.CommandType);
+			var method = methodList.FirstOrDefault(p =>
+			   (p.Method != null && p.Method.Equals(request.Method))
+			   || (p.Alias != null && p.Alias.Equals(request.Method)));
 			if (method == null) {
 				return null;
 			}
@@ -38,18 +37,18 @@ namespace Haruair.Command
 		}
 
 		public IList<CommandMeta> Find (IRequest request) {
-			var commandList = this.ConvertCommandsToCommandMeta (this.Commands);
+			var commandList = ConvertCommandsToCommandMeta (Commands);
 
 			if (request.Command == null)
 				return commandList;
 			
-			var command = commandList.Where (p => (p.Method.Equals (request.Command) || p.Alias.Equals (request.Command))).FirstOrDefault ();
+			var command = commandList.FirstOrDefault(p => (p.Method.Equals(request.Command) || p.Alias.Equals(request.Command)));
 
 			if (command == null && commandList.Count > 0) {
 				return commandList;
 			}
 
-			var methodList = this.ConvertCommandToCommandMeta (command.CommandType);
+			var methodList = ConvertCommandToCommandMeta(command.CommandType);
 
 			if (request.Method == null)
 				return methodList;
@@ -61,7 +60,7 @@ namespace Haruair.Command
 			var list = new List<CommandMeta> ();
 			foreach (var type in types) {
 				var attributes = Attribute.GetCustomAttributes (type);
-				list.Add (this.ConvertToCommandMeta (attributes, type));
+				list.Add (ConvertToCommandMeta(attributes, type));
 			}
 
 			return list;
@@ -71,7 +70,7 @@ namespace Haruair.Command
 			var list = new List<CommandMeta> ();
 			foreach (var method in type.GetMethods ()) {
 				var attributes = Attribute.GetCustomAttributes (method);
-				list.Add (this.ConvertToCommandMeta(attributes, type, method));
+				list.Add (ConvertToCommandMeta(attributes, type, method));
 			}
 			return list;
 		}
@@ -83,7 +82,8 @@ namespace Haruair.Command
 			var command = (Command)Attribute.GetCustomAttribute (type, typeof(Command));
 			var usage = (Usage)Attribute.GetCustomAttribute (type, typeof(Usage));
 
-			var meta = new CommandMeta () {
+			var meta = new CommandMeta
+			{
 				Alias = command?.Alias,
 				Method = command?.Method,
 				Description = usage?.Description,
@@ -101,7 +101,8 @@ namespace Haruair.Command
 			var command = (Command)Attribute.GetCustomAttribute (method, typeof(Command));
 			var usage = (Usage)Attribute.GetCustomAttribute (method, typeof(Usage));
 
-			var meta = new CommandMeta () {
+			var meta = new CommandMeta
+			{
 				Alias = command?.Alias,
 				Method = command?.Method,
 				Description = usage?.Description,
