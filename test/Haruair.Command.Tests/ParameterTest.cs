@@ -42,6 +42,7 @@ namespace Haruair.Command.Tests
 
 			var expected = @"Example of country:
   where <here>	Country check now. No GPS Search.
+  add <country> [lat] [lng]	Add new country.
 ";
 			expected = expected.Replace ("\n", Environment.NewLine).TrimEnd();
 			Assert.AreEqual (expected, sw.ToString ().TrimEnd());

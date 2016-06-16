@@ -111,6 +111,12 @@ namespace Haruair.Command
 			foreach (var meta in metaList) {
 				Prompter.Write ("  {0}", meta.Method);
 				if(meta.Alias != null) Prompter.Write (", {0}", meta.Alias);
+				if (meta.MethodInfo != null) {
+					var methodParamAttributes = (Parameter[]) Attribute.GetCustomAttributes (meta.MethodInfo, typeof(Parameter));
+					foreach (var param in methodParamAttributes) {
+						Prompter.Write (param.Required ? " <{0}>" : " [{0}]", param.Attribute);
+					}
+				}
 				if(meta.Description != null) Prompter.WriteLine ("\t{0}", meta.Description);
 				else
 					Prompter.WriteLine ();
