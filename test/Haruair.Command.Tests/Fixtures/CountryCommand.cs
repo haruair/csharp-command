@@ -20,8 +20,8 @@ namespace Haruair.Command.Tests.Fixtures
 		[Parameter("lng", Required = false)]
 		public void AddCountry(string country, string lat, string lng) {
 			Console.WriteLine ("Add new country {0}", country);
-			Console.WriteLine ("lat is {0}", lat == null ? "null" : lat);
-			Console.WriteLine ("lng is {0}", lat == null ? "null" : lng);
+			Console.WriteLine ("lat is {0}", lat ?? "null");
+			Console.WriteLine ("lng is {0}", lng ?? "null");
 		}
 	}
 }
