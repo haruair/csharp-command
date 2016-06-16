@@ -16,8 +16,8 @@ namespace Haruair.Command.Tests.Fixtures
 		[Command("add")]
 		[Usage("Add new country.")]
 		[Parameter("country")]
-		[Parameter("lat", Parameter.Required.Optional)]
-		[Parameter("lng", Parameter.Required.Optional)]
+		[Parameter("lat", Required = false)]
+		[Parameter("lng", Required = false)]
 		public void AddCountry(string country, string lat, string lng) {
 			Console.WriteLine ("Add new country {0}", country);
 			Console.WriteLine ("lat is {0}", lat == null ? "null" : lat);

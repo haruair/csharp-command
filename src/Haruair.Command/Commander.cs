@@ -72,8 +72,12 @@ namespace Haruair.Command
 				if (methodParameters.Length > 0) {
 					var i = 0;
 					foreach (var methodParameter in methodParameters) {
-						var p = request.Params.ElementAtOrDefault (i);
-						if (p != null) parameters.Add (p);
+						var requestParam = request.Params.ElementAtOrDefault (i);
+						var methodParamAttribute = methodParamAttributes
+							.Where (p => p.Attribute.Equals (methodParameter.Name))
+							.FirstOrDefault ();
+						
+						if (requestParam != null || methodParamAttribute.Required == false) parameters.Add (requestParam);
 						i++;
 					}
 				}
