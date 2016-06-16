@@ -47,6 +47,7 @@
     <Compile Include="BasicRequestParser.cs" />
     <Compile Include="Interface\ICommandResolver.cs" />
     <Compile Include="BasicCommandResolver.cs" />
+    <Compile Include="Attributes\Parameter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

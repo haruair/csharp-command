@@ -39,6 +39,8 @@
     <Compile Include="Fixtures\HelloWorldCommand.cs" />
     <Compile Include="BasicConsolePrompterTest.cs" />
     <Compile Include="BasicRequestParserTest.cs" />
+    <Compile Include="ParameterTest.cs" />
+    <Compile Include="Fixtures\CountryCommand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
