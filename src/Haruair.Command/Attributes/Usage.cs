@@ -2,16 +2,17 @@
 
 namespace Haruair.Command
 {
-	[System.AttributeUsage(System.AttributeTargets.Class | System.AttributeTargets.Method)]
-	public class Usage : System.Attribute
+	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+	public class Usage : Attribute
 	{
-		public string Description {
+		public string Description
+		{
 			get; private set;
 		}
 
-		public Usage(string description) {
-			this.Description = description;
+		public Usage(string description)
+		{
+			Description = description;
 		}
 	}
 }
-

@@ -5,13 +5,13 @@ namespace Haruair.Command.Interface
 {
 	public interface ICommandResolver
 	{
-		IList<Type> Commands {
+		IList<Type> Commands
+		{
 			get;
 			set;
 		}
 
-		CommandMeta Match (IRequest request);
-		IList<CommandMeta> Find (IRequest request);
+		CommandMeta Match(IRequest request);
+		IList<CommandMeta> Find(IRequest request);
 	}
 }
-

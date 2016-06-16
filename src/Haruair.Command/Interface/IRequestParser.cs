@@ -14,4 +14,3 @@ namespace Haruair.Command.Interface
 		IRequest Parse(string[] args);
 	}
 }
-

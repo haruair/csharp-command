@@ -2,24 +2,25 @@
 
 namespace Haruair.Command
 {
-	[System.AttributeUsage(System.AttributeTargets.Parameter | System.AttributeTargets.Method, AllowMultiple = true)]
-	public class Parameter : System.Attribute
+	[AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method, AllowMultiple = true)]
+	public class Parameter : Attribute
 	{
-		public string Attribute {
-			get;
-			set;
-		}
-
-		public bool Required {
-			get;
-			set;
-		}
-
-		public Parameter (string attribute, bool required = true)
+		public string Attribute
 		{
-			this.Attribute = attribute;
-			this.Required = required;
+			get;
+			set;
+		}
+
+		public bool Required
+		{
+			get;
+			set;
+		}
+
+		public Parameter(string attribute, bool required = true)
+		{
+			Attribute = attribute;
+			Required = required;
 		}
 	}
 }
-

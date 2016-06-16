@@ -11,4 +11,3 @@ namespace Haruair.Command.Interface
 		IDictionary<string, string> Options { get; set; }
 	}
 }
-

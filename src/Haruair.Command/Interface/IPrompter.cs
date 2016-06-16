@@ -12,4 +12,3 @@ namespace Haruair.Command.Interface
 		void WriteLine(string value, params object[] arg);
 	}
 }
-

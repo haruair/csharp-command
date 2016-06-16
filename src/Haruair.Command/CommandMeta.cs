@@ -3,27 +3,36 @@ using System.Reflection;
 
 namespace Haruair.Command
 {
-	public class CommandMeta {
-		public string Method {
+	public class CommandMeta
+	{
+		public string Method
+		{
 			get;
 			set;
 		}
-		public string Alias {
+
+		public string Alias
+		{
 			get;
 			set;
 		}
-		public string Description {
+
+		public string Description
+		{
 			get;
 			set;
 		}
-		public Type CommandType {
+
+		public Type CommandType
+		{
 			get;
 			set;
 		}
-		public MethodInfo MethodInfo {
+
+		public MethodInfo MethodInfo
+		{
 			get;
 			set;
 		}
 	}
 }
-
