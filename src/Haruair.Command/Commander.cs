@@ -64,17 +64,43 @@ namespace Haruair.Command
 			var meta = CommandResolver.Match (request);
 
 			if (meta != null) {
-				meta.MethodInfo.Invoke (Activator.CreateInstance (meta.CommandType), null);
-			} else {
-				var list = CommandResolver.Find (request);
-				var identity = list.FirstOrDefault ();
-				if (identity.MethodInfo != null) {
-					Prompter.WriteLine ("Example of {0}:", request.Command);
-				} else {
-					Prompter.WriteLine ("Example: ");
+				var methodParameters = meta.MethodInfo.GetParameters ();
+				var methodParamAttributes = (Parameter[]) Attribute.GetCustomAttributes (meta.MethodInfo, typeof(Parameter));
+
+				IList<string> parameters = new List<string> ();
+
+				if (methodParameters.Length > 0) {
+					var i = 0;
+					foreach (var methodParameter in methodParameters) {
+						var p = request.Params.ElementAtOrDefault (i);
+						if (p != null) parameters.Add (p);
+						i++;
+					}
 				}
-				this.PrintCommands (list);
+				if (parameters.Count == methodParamAttributes.Length) {
+					if (parameters.Count == 0) {
+						meta.MethodInfo.Invoke (Activator.CreateInstance (meta.CommandType), null);
+					} else {
+						meta.MethodInfo.Invoke (Activator.CreateInstance (meta.CommandType), parameters.ToArray ());
+					}
+				} else {
+					this.PrintMessage (request);
+				}
+
+			} else {
+				this.PrintMessage (request);
 			}
+		}
+
+		protected void PrintMessage (IRequest request) {
+			var list = CommandResolver.Find (request);
+			var identity = list.FirstOrDefault ();
+			if (identity.MethodInfo != null) {
+				Prompter.WriteLine ("Example of {0}:", request.Command);
+			} else {
+				Prompter.WriteLine ("Example: ");
+			}
+			this.PrintCommands (list);
 		}
 
 		protected void PrintCommands(IList<CommandMeta> metaList) {

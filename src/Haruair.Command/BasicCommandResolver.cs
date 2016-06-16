@@ -26,8 +26,10 @@ namespace Haruair.Command
 			}
 
 			var methodList = this.ConvertCommandToCommandMeta (command.CommandType);
-			var method = methodList.Where (p => (p.Method.Equals(request.Method) || p.Alias.Equals(request.Method))).FirstOrDefault ();
-
+			var method = methodList.Where (p =>
+				(p.Method != null && p.Method.Equals (request.Method))
+				|| (p.Alias != null && p.Alias.Equals (request.Method))
+			).FirstOrDefault ();
 			if (method == null) {
 				return null;
 			}
@@ -42,22 +44,17 @@ namespace Haruair.Command
 				return commandList;
 			
 			var command = commandList.Where (p => (p.Method.Equals (request.Command) || p.Alias.Equals (request.Command))).FirstOrDefault ();
-			var methodList = this.ConvertCommandToCommandMeta (command.CommandType);
-
-			if (request.Method == null)
-				return methodList;
-
-			var method = methodList.Where (p => (p.Method.Equals (request.Method) || p.Alias.Equals (request.Method))).FirstOrDefault ();
-
-			if (method == null && methodList.Count > 0) {
-				return methodList;
-			}
 
 			if (command == null && commandList.Count > 0) {
 				return commandList;
 			}
 
-			return null;
+			var methodList = this.ConvertCommandToCommandMeta (command.CommandType);
+
+			if (request.Method == null)
+				return methodList;
+
+			return methodList;
 		}
 
 		protected IList<CommandMeta> ConvertCommandsToCommandMeta (IList<Type> types) {

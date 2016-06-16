@@ -50,7 +50,7 @@ namespace Haruair.Command.Tests
 		[Test ()]
 		public void OneParamTestCase ()
 		{
-			var mockArgs = new string[] { "country", "now", "Australia" };
+			var mockArgs = new string[] { "country", "where", "Australia" };
 			this.commander.Parse (mockArgs);
 
 			var expected = @"Where are you? Australia?
