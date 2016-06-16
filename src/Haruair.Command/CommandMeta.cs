@@ -16,11 +16,11 @@ namespace Haruair.Command
 			get;
 			set;
 		}
-		public Type Command {
+		public Type CommandType {
 			get;
 			set;
 		}
-		public MethodInfo CallMethod {
+		public MethodInfo MethodInfo {
 			get;
 			set;
 		}

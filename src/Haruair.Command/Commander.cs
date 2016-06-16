@@ -64,11 +64,11 @@ namespace Haruair.Command
 			var meta = CommandResolver.Match (request);
 
 			if (meta != null) {
-				meta.CallMethod.Invoke (Activator.CreateInstance (meta.Command), null);
+				meta.MethodInfo.Invoke (Activator.CreateInstance (meta.CommandType), null);
 			} else {
 				var list = CommandResolver.Find (request);
 				var identity = list.FirstOrDefault ();
-				if (identity.CallMethod != null) {
+				if (identity.MethodInfo != null) {
 					Prompter.WriteLine ("Example of {0}:", request.Command);
 				} else {
 					Prompter.WriteLine ("Example: ");

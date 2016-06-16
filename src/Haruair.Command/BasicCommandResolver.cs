@@ -25,7 +25,7 @@ namespace Haruair.Command
 				return null;
 			}
 
-			var methodList = this.ConvertCommandToCommandMeta (command.Command);
+			var methodList = this.ConvertCommandToCommandMeta (command.CommandType);
 			var method = methodList.Where (p => (p.Method.Equals(request.Method) || p.Alias.Equals(request.Method))).FirstOrDefault ();
 
 			if (method == null) {
@@ -42,7 +42,7 @@ namespace Haruair.Command
 				return commandList;
 			
 			var command = commandList.Where (p => (p.Method.Equals (request.Command) || p.Alias.Equals (request.Command))).FirstOrDefault ();
-			var methodList = this.ConvertCommandToCommandMeta (command.Command);
+			var methodList = this.ConvertCommandToCommandMeta (command.CommandType);
 
 			if (request.Method == null)
 				return methodList;
@@ -90,8 +90,8 @@ namespace Haruair.Command
 				Alias = command?.Alias,
 				Method = command?.Method,
 				Description = usage?.Description,
-				Command = type,
-				CallMethod = null
+				CommandType = type,
+				MethodInfo = null
 			};
 
 			return meta;
@@ -108,8 +108,8 @@ namespace Haruair.Command
 				Alias = command?.Alias,
 				Method = command?.Method,
 				Description = usage?.Description,
-				Command = type,
-				CallMethod = method
+				CommandType = type,
+				MethodInfo = method
 			};
 
 			return meta;
