@@ -140,7 +140,9 @@ namespace Haruair.Command
 
 		protected void PrintCommands(IList<CommandMeta> metaList)
 		{
-			foreach (var meta in metaList)
+			var list = metaList.Where(p => p.Method != null);
+
+			foreach (var meta in list)
 			{
 				Prompter.Write("  {0}", meta.Method);
 				if (meta.Alias != null) Prompter.Write(", {0}", meta.Alias);
