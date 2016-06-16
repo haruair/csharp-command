@@ -43,6 +43,7 @@ namespace Haruair.Command.Tests
 			var expected = @"Example of country:
   where <here>	Country check now. No GPS Search.
   add <country> [lat] [lng]	Add new country.
+  insert, i <lat> <lng> <country>	Add new country, in a very unusual way.
 ";
 			expected = expected.Replace("\n", Environment.NewLine).TrimEnd();
 			Assert.AreEqual(expected, sw.ToString().TrimEnd());
@@ -78,6 +79,20 @@ lng is null
 		public void OptionalParamsTestCase()
 		{
 			var mockArgs = new string[] { "country", "add", "Australia", "10.000", "20.000" };
+			commander.Parse(mockArgs);
+
+			var expected = @"Add new country Australia
+lat is 10.000
+lng is 20.000
+";
+			expected = expected.Replace("\n", Environment.NewLine).TrimEnd();
+			Assert.AreEqual(expected, sw.ToString().TrimEnd());
+		}
+
+		[Test]
+		public void RequiredParamsTestCase()
+		{
+			var mockArgs = new string[] { "country", "insert", "10.000", "20.000", "Australia" };
 			commander.Parse(mockArgs);
 
 			var expected = @"Add new country Australia

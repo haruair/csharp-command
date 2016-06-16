@@ -25,5 +25,17 @@ namespace Haruair.Command.Tests.Fixtures
 			Console.WriteLine("lat is {0}", lat ?? "null");
 			Console.WriteLine("lng is {0}", lng ?? "null");
 		}
+
+		[Command("insert", "i")]
+		[Usage("Add new country, in a very unusual way.")]
+		[Parameter("lat")]
+		[Parameter("lng")]
+		[Parameter("country")]
+		public void InsertCountry(string country, string lat, string lng)
+		{
+			Console.WriteLine("Add new country {0}", country);
+			Console.WriteLine("lat is {0}", lat ?? "null");
+			Console.WriteLine("lng is {0}", lng ?? "null");
+		}
 	}
 }
