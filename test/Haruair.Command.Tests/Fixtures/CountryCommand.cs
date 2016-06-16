@@ -9,8 +9,9 @@ namespace Haruair.Command.Tests.Fixtures
 		[Command("where")]
 		[Usage("Country check now. No GPS Search.")]
 		[Parameter("here")]
-		public void WhereIAm(string here) {
-			Console.WriteLine ("Where are you? {0}?", here);
+		public void WhereIAm(string here)
+		{
+			Console.WriteLine("Where are you? {0}?", here);
 		}
 
 		[Command("add")]
@@ -18,11 +19,11 @@ namespace Haruair.Command.Tests.Fixtures
 		[Parameter("country")]
 		[Parameter("lat", Required = false)]
 		[Parameter("lng", Required = false)]
-		public void AddCountry(string country, string lat, string lng) {
-			Console.WriteLine ("Add new country {0}", country);
-			Console.WriteLine ("lat is {0}", lat ?? "null");
-			Console.WriteLine ("lng is {0}", lng ?? "null");
+		public void AddCountry(string country, string lat, string lng)
+		{
+			Console.WriteLine("Add new country {0}", country);
+			Console.WriteLine("lat is {0}", lat ?? "null");
+			Console.WriteLine("lng is {0}", lng ?? "null");
 		}
 	}
 }
-

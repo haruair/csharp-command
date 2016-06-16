@@ -8,9 +8,9 @@ namespace Haruair.Command.Tests.Fixtures
 	{
 		[Command("say", "s")]
 		[Usage("When you want to say something, you can use it.")]
-		public void Say() {
-			Console.WriteLine ("Yo. You called me.");
+		public void Say()
+		{
+			Console.WriteLine("Yo. You called me.");
 		}
 	}
 }
-

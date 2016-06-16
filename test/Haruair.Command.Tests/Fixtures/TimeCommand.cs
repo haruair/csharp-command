@@ -7,9 +7,9 @@ namespace Haruair.Command.Tests.Fixtures
 	public class TimeCommand
 	{
 		[Command("now")]
-		public void Now() {
-			Console.WriteLine ("{0}", DateTime.Now);
+		public void Now()
+		{
+			Console.WriteLine("{0}", DateTime.Now);
 		}
 	}
 }
-
