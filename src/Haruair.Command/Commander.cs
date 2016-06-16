@@ -77,21 +77,34 @@ namespace Haruair.Command
 				var methodParameters = meta.MethodInfo.GetParameters();
 				var methodParamAttributes = (Parameter[])Attribute.GetCustomAttributes(meta.MethodInfo, typeof(Parameter));
 
-				IList<string> parameters = new List<string>();
+				IList<string> parameters = new List<string>(new string[methodParamAttributes.Length]);
 
 				if (methodParameters.Length > 0)
 				{
-					var i = 0;
 					foreach (var methodParameter in methodParameters)
 					{
-						var requestParam = request.Params.ElementAtOrDefault(i);
-						var methodParamAttribute = methodParamAttributes.FirstOrDefault(p => p.Attribute.Equals(methodParameter.Name));
+						var index = Array.IndexOf(methodParameters, methodParameter);
 
-						if (requestParam != null || methodParamAttribute.Required == false) parameters.Add(requestParam);
-						i++;
+						var methodParamAttribute = methodParamAttributes.FirstOrDefault(p => p.Attribute.Equals(methodParameter.Name));
+						var paramIndex = Array.IndexOf(methodParamAttributes, methodParamAttribute);
+						var requestParam = request.Params.ElementAtOrDefault(paramIndex);
+
+						parameters[index] = requestParam;
 					}
 				}
-				if (parameters.Count == methodParamAttributes.Length)
+
+				var isRequireFieldMissing = false;
+
+				foreach (var attr in methodParamAttributes)
+				{
+					var index = Array.IndexOf(methodParamAttributes, attr);
+					if (attr.Required && parameters.ElementAtOrDefault(index) == null)
+					{
+						isRequireFieldMissing = true;
+					}
+				}
+
+				if (isRequireFieldMissing == false && parameters.Count == methodParamAttributes.Length)
 				{
 					if (parameters.Count == 0)
 					{
